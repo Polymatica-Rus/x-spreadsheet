@@ -20,12 +20,6 @@ const menuItems = [
   { key: 'divider' },
   { key: 'validation', title: tf('contextmenu.validation') },
   { key: 'divider' },
-  { key: 'cell-printable', title: tf('contextmenu.cellprintable') },
-  { key: 'cell-non-printable', title: tf('contextmenu.cellnonprintable') },
-  { key: 'divider' },
-  { key: 'cell-editable', title: tf('contextmenu.celleditable') },
-  { key: 'cell-non-editable', title: tf('contextmenu.cellnoneditable') },
-  { key: 'divider' },
   { key: 'autofit-cell-width', title: tf('contextmenu.autofitCellWidth') },
   { key: 'autofit-cell-height', title: tf('contextmenu.autofitCellHeight') },
 ];
