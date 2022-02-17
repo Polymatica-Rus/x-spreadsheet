@@ -656,7 +656,7 @@ export default class DataProxy {
 
     this.setCommonFakeCellsStyles(newDiv);
 
-    if (cellData && cellData.style && cellData.style.font && cellData.style.font.bold) {
+    if (cellData && cellData.bold) {
       newDiv.style.fontWeight = "bold";
     }
     newDiv.style.width = "97px";
@@ -680,7 +680,7 @@ export default class DataProxy {
 
     this.setCommonFakeCellsStyles(newDiv);
 
-    if (cellData && cellData.style && cellData.style.font && cellData.style.font.bold) {
+    if (cellData && cellData.bold) {
       newDiv.style.fontWeight = "bold";
     }
 
