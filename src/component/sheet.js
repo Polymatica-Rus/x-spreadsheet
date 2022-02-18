@@ -331,9 +331,21 @@ function copy(evt) {
 
 function cut() {
   const { data, selector } = this;
+  const { sri } = this.selector.range;
+  const { sci } = this.selector.range;
+
+  const cell = data.getCell(sri, sci);
+
+  if (cell && cell.editable === false) {
+    this.trigger('cut', false);
+    return;
+  }
+
   if (data.settings.mode === 'read') return;
   data.cut();
   selector.showClipboard();
+
+  this.trigger('cut', true);
 }
 
 function paste(what, evt) {
