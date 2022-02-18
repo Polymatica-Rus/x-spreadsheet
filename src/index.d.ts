@@ -52,7 +52,7 @@ declare module 'poly-spreadsheet' {
   export type CELLS_SELECTED = 'cells-selected';
   export type CELL_EDITED = 'cell-edited';
   export type CHANGE_SHEET_INDEX = 'changeSheetIndex';
-  export type CUT = 'paste';
+  export type CUT = 'cut';
   export type PASTE = 'paste';
 
   export type CellMerge = [number, number];
