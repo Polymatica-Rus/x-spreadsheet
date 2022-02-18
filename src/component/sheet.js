@@ -331,17 +331,31 @@ function copy(evt) {
 
 function cut() {
   const { data, selector } = this;
-  const { sri } = this.selector.range;
-  const { sci } = this.selector.range;
+  const {
+    sri, sci, eri, eci,
+  } = this.selector.range;
 
-  const cell = data.getCell(sri, sci);
+  let editable = true;
 
-  if (cell && cell.editable === false) {
+  for (let i = sri; i <= eri; i++) {
+    if (data.rows._[i]) {
+      const { cells } = data.rows._[i];
+
+      Object.entries(cells).forEach(([key, value]) => {
+        if (key >= sci && key <= eci && value.editable === false) {
+          editable = false;
+        }
+      });
+    }
+  }
+
+  if (editable === false) {
     this.trigger('cut', false);
     return;
   }
 
   if (data.settings.mode === 'read') return;
+
   data.cut();
   selector.showClipboard();
 
