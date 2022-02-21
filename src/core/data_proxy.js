@@ -593,15 +593,16 @@ export default class DataProxy {
         }
       }
 
-      biggestCellsWidth = Object.values(biggestCellsWidth).filter((value)=>{
-        return value.text !== ''
-      })
+      console.log('biggestCellsWidth', biggestCellsWidth);
+
       for (let [key, value] of Object.entries(biggestCellsWidth)){
-        const width =
-          this.getMaxCellWidth(value) <= 100
-            ? 100
-            : this.getMaxCellWidth(value);
-        this.setColWidth(key, width);
+        if(value.text !== ''){
+          const width =
+            this.getMaxCellWidth(value) <= 100
+              ? 100
+              : this.getMaxCellWidth(value);
+          this.setColWidth(key, width);
+        }
       }
     }
 
@@ -634,11 +635,11 @@ export default class DataProxy {
             }
           }
         }
+        if(biggestCellsHeight[ri].text === ''){
+          biggestCellsHeight.splice(ri, 1)
+        }
       }
 
-      biggestCellsHeight = Object.values(biggestCellsHeight).filter((value)=>{
-        return value.text  !== ''
-      })
       for (let [key, value] of Object.entries(biggestCellsHeight)) {
         this.setRowHeight(
           key,
