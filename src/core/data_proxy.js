@@ -627,10 +627,10 @@ export default class DataProxy {
               }
             }
           }
+          this.setColWidth(ci, 100);
         }
       }
-      for (let [key, value] of Object.entries(biggestCellsHeight)){
-        this.setColWidth(key, 100);
+      for (let [key, value] of Object.entries(biggestCellsHeight)) {
         this.setRowHeight(
           key,
           this.getMaxCellHeight(value),
