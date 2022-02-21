@@ -593,10 +593,9 @@ export default class DataProxy {
         }
       }
 
-      console.log('biggestCellsWidth', biggestCellsWidth);
-
       for (let [key, value] of Object.entries(biggestCellsWidth)){
         if(value.text !== ''){
+          i++
           const width =
             this.getMaxCellWidth(value) <= 100
               ? 100
@@ -605,6 +604,7 @@ export default class DataProxy {
         }
       }
     }
+
 
     if (sourceType === 'row' && autoType === 'height') {
       for (let ri = sri; ri <= eri; ri += 1) {
