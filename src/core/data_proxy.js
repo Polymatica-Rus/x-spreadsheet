@@ -592,6 +592,10 @@ export default class DataProxy {
           }
         }
       }
+
+      biggestCellsWidth = Object.values(biggestCellsWidth).filter((value)=>{
+        return value.text !== ''
+      })
       for (let [key, value] of Object.entries(biggestCellsWidth)){
         const width =
           this.getMaxCellWidth(value) <= 100
@@ -603,6 +607,7 @@ export default class DataProxy {
 
     if (sourceType === 'row' && autoType === 'height') {
       for (let ri = sri; ri <= eri; ri += 1) {
+
         let keyAsNumber = Number(ri);
 
         if (!biggestCellsHeight[ri]) {
@@ -625,11 +630,15 @@ export default class DataProxy {
               ) {
                 biggestCellsHeight[ri] = valueCell;
               }
+              this.setColWidth(ci, 100);
             }
           }
-          this.setColWidth(ci, 100);
         }
       }
+
+      biggestCellsHeight = Object.values(biggestCellsHeight).filter((value)=>{
+        return value.text  !== ''
+      })
       for (let [key, value] of Object.entries(biggestCellsHeight)) {
         this.setRowHeight(
           key,
@@ -637,6 +646,7 @@ export default class DataProxy {
         );
       }
     }
+
   }
 
   setCommonFakeCellsStyles(element) {
