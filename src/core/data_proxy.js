@@ -591,11 +591,11 @@ export default class DataProxy {
             }
           }
         }
+        this.setRowHeight(ri, 25);
       }
 
       for (let [key, value] of Object.entries(biggestCellsWidth)){
         if(value.text !== ''){
-          i++
           const width =
             this.getMaxCellWidth(value) <= 100
               ? 100
@@ -657,7 +657,7 @@ export default class DataProxy {
     element.style.position = "absolute";
     element.style.background = "blue";
     element.style.color = "white";
-    element.style.padding = "4px 6px";
+    element.style.padding = "6px 6px";
     element.style.fontSize = "13px";
     element.style.minWidth = "60px";
     element.style.boxSizing = "border-box";
