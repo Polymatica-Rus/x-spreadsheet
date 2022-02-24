@@ -15,7 +15,7 @@ export default function tooltip(html, target) {
   const elBox = el.box();
   // console.log('elBox:', elBox);
   el.css('left', `${left + (width / 2) - (elBox.width / 2)}px`)
-    .css('top', `${top + height + 2}px`);
+    .css('top', `${top + height + 11}px`);
 
   bind(target, 'mouseleave', () => {
     if (document.body.contains(el.el)) {
