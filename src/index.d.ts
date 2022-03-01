@@ -45,7 +45,7 @@ declare module 'poly-spreadsheet' {
         italic: false;
       };
     };
-    cellsStyles?: CellStyle[]
+    cellsStyles?: CellStyle[];
   }
 
   export type CELL_SELECTED = 'cell-selected';
@@ -199,8 +199,9 @@ declare module 'poly-spreadsheet' {
     /**s
      * load data
      * @param json
+     * @param sheetIndex
      */
-    loadData(json: Record<string, any>): this;
+    loadData(json: Record<string, any>, sheetIndex: number): this;
 
     /**
      * string at

@@ -234,6 +234,12 @@ export default class Bottombar {
     return [-1];
   }
 
+  showSheet(index) {
+    this.clickSwap(this.items[index]);
+    this.activeEl.toggle();
+    this.swapFunc(index);
+  }
+
   clickSwap2(item) {
     const index = this.items.findIndex(it => it === item);
     this.clickSwap(item);

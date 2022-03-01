@@ -45,6 +45,10 @@ class Spreadsheet {
     }
   }
 
+  showSheet(index) {
+    this.bottombar.showSheet(index);
+  }
+
   addSheet(name, active = true) {
     const n = name || `sheet${this.sheetIndex}`;
     const d = new DataProxy(n, this.options);
@@ -70,11 +74,12 @@ class Spreadsheet {
     }
   }
 
-  loadData(data) {
+  loadData(data, sheetIndex) {
     const ds = Array.isArray(data) ? data : [data];
     if (this.bottombar !== null) {
       this.bottombar.clear();
     }
+
     this.datas = [];
     this.sheetIndex = 1;
 
@@ -88,6 +93,11 @@ class Spreadsheet {
         }
       }
     }
+
+    if (sheetIndex) {
+      this.showSheet(sheetIndex);
+    }
+
     return this;
   }
 
