@@ -364,12 +364,11 @@ function cut() {
 
 function paste(what, evt) {
   const { data } = this;
-  const { sri } = this.selector.range;
-  const { sci } = this.selector.range;
+  const { sri, sci } = this.selector.range;
 
   const cell = data.getCell(sri, sci);
 
-  if (cell && cell.editable === false) {
+  if ((cell && cell.editable === false) && !this.selector.range.multiple()) {
     this.trigger('paste', false);
     return;
   }
@@ -404,7 +403,7 @@ function paste(what, evt) {
       }
     }
 
-    if (editable === false) {
+    if (editable === false && !this.selector.range.multiple()) {
       this.trigger('paste', false);
       return;
     }

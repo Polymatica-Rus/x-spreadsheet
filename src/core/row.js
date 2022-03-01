@@ -92,15 +92,17 @@ class Rows {
   // what: all | text | format
   setCell(ri, ci, cell, what = 'all') {
     const row = this.getOrNew(ri);
-    if (what === 'all') {
-      row.cells[ci] = cell;
-    } else if (what === 'text') {
-      row.cells[ci] = row.cells[ci] || {};
-      row.cells[ci].text = cell.text;
-    } else if (what === 'format') {
-      row.cells[ci] = row.cells[ci] || {};
-      row.cells[ci].style = cell.style;
-      if (cell.merge) row.cells[ci].merge = cell.merge;
+    if ((row.cells[ci] && row.cells[ci].editable !== false) || !row.cells[ci]) {
+      if (what === 'all') {
+        row.cells[ci] = cell;
+      } else if (what === 'text') {
+        row.cells[ci] = row.cells[ci] || {};
+        row.cells[ci].text = cell.text;
+      } else if (what === 'format') {
+        row.cells[ci] = row.cells[ci] || {};
+        row.cells[ci].style = cell.style;
+        if (cell.merge) row.cells[ci].merge = cell.merge;
+      }
     }
   }
 
