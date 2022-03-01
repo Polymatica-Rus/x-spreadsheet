@@ -27,6 +27,11 @@
       }
       const rows = {
         len: 80,
+        0: {
+          cells: {
+            0: { text: '123', editable: false },
+          },
+        },
         1: {
           cells: {
             0: { text: 'testingtesttestetst' },
@@ -92,9 +97,6 @@
                 left: ['thin', '#0366d6'],
               },
             },
-          ],
-          merges: [
-            'C3:D4',
           ],
           cols: {
             len: 10,
