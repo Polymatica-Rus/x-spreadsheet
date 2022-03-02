@@ -150,6 +150,14 @@ class Spreadsheet {
     return this.datas[sheetIndex].getCell(ri, ci);
   }
 
+  deleteRow() {
+    this.sheet.insertDeleteRowColumn('delete-row')
+  }
+
+  deleteCol() {
+    this.sheet.insertDeleteRowColumn('delete-column')
+  }
+
   cellStyle(ri, ci, sheetIndex = 0) {
     return this.datas[sheetIndex].getCellStyle(ri, ci);
   }

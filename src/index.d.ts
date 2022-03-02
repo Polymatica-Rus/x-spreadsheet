@@ -239,6 +239,16 @@ declare module 'poly-spreadsheet' {
     selectCell(sri: number, sci: number): void;
 
     /**
+     * delete selected row
+     */
+    deleteRow():void;
+
+    /**
+     * delete selected column
+     */
+    deleteCol(): void;
+
+    /**
      * expr2xy
      */
     expr2xy(str: string): any;

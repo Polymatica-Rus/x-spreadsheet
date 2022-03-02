@@ -1053,6 +1053,10 @@ export default class Sheet {
     selectorSet.call(this, false, 0, 0);
   }
 
+  insertDeleteRowColumn(type){
+    insertDeleteRowColumn.call(this, type);
+  }
+
   on(eventName, func) {
     this.eventMap.on(eventName, func);
     return this;
