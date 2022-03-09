@@ -21,8 +21,8 @@ class Spreadsheet {
     this.bottombar = this.options.showBottomBar ? new Bottombar(() => {
       if (this.options.mode === 'read') return;
       const d = this.addSheet();
-      const idx = this.datas.length - 1;
-      this.sheet.trigger('change-sheet-index', idx);
+      const index = this.datas.length - 1;
+      this.sheet.trigger('change-sheet-index', index);
       this.sheet.resetData(d);
     }, (index) => {
       const d = this.datas[index];
