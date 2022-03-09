@@ -22,12 +22,12 @@ class Spreadsheet {
       if (this.options.mode === 'read') return;
       const d = this.addSheet();
       const idx = this.datas.length - 1;
-      this.sheet.trigger('changeSheetIndex', idx);
+      this.sheet.trigger('change-sheet-index', idx);
       this.sheet.resetData(d);
     }, (index) => {
       const d = this.datas[index];
       this.sheet.resetData(d);
-      this.sheet.trigger('changeSheetIndex', index);
+      this.sheet.trigger('change-sheet-index', index);
     }, () => {
       this.deleteSheet();
     }, (index, value) => {
@@ -70,7 +70,7 @@ class Spreadsheet {
     if (oldIndex >= 0) {
       this.datas.splice(oldIndex, 1);
       if (nindex >= 0) this.sheet.resetData(this.datas[nindex]);
-      this.sheet.trigger('change');
+      this.sheet.trigger('delete-sheet-index', oldIndex);
     }
   }
 
@@ -94,7 +94,7 @@ class Spreadsheet {
       }
     }
 
-    if (sheetIndex) {
+    if (sheetIndex > 0) {
       this.showSheet(sheetIndex);
     }
 
@@ -151,11 +151,11 @@ class Spreadsheet {
   }
 
   deleteRow() {
-    this.sheet.insertDeleteRowColumn('delete-row')
+    this.sheet.insertDeleteRowColumn('delete-row');
   }
 
   deleteCol() {
-    this.sheet.insertDeleteRowColumn('delete-column')
+    this.sheet.insertDeleteRowColumn('delete-column');
   }
 
   cellStyle(ri, ci, sheetIndex = 0) {
@@ -179,11 +179,6 @@ class Spreadsheet {
 
   change(cb) {
     this.sheet.on('change', cb);
-    return this;
-  }
-
-  changeSheetIndex(index) {
-    this.sheet.on('changeSheetIndex', index);
     return this;
   }
 
