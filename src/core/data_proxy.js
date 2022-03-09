@@ -648,6 +648,11 @@ export default class DataProxy {
       }
     }
 
+    setTimeout(() => {
+      this.scroll.x = this.scroll.x + 100;
+      this.scroll.x = this.scroll.x - 100;
+    }, 500);
+
   }
 
   setCommonFakeCellsStyles(element) {
