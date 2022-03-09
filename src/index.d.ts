@@ -51,7 +51,8 @@ declare module 'poly-spreadsheet' {
   export type CELL_SELECTED = 'cell-selected';
   export type CELLS_SELECTED = 'cells-selected';
   export type CELL_EDITED = 'cell-edited';
-  export type CHANGE_SHEET_INDEX = 'changeSheetIndex';
+  export type CHANGE_SHEET_INDEX = 'change-sheet-index';
+  export type DELETE_SHEET_INDEX = 'delete-sheet-index';
   export type CUT = 'cut';
   export type PASTE = 'paste';
 
@@ -76,6 +77,10 @@ declare module 'poly-spreadsheet' {
     (
       event: CHANGE_SHEET_INDEX,
       callback: (index: number) => void
+    ): void;
+    (
+        event: DELETE_SHEET_INDEX,
+        callback: (index: number) => void
     ): void;
     (
       event: CUT,
