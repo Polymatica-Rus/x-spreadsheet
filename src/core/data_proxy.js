@@ -651,6 +651,8 @@ export default class DataProxy {
     setTimeout(() => {
       this.scroll.x = this.scroll.x + 100;
       this.scroll.x = this.scroll.x - 100;
+      this.scroll.y = this.scroll.y + 100;
+      this.scroll.y = this.scroll.y - 100;
     }, 500);
 
   }
