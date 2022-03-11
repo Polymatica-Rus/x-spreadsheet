@@ -1104,6 +1104,14 @@ export default class Sheet {
     this.reload();
   }
 
+  allowMerge() {
+    this.toolbar.allowMerge()
+  }
+
+  disableMerge() {
+    this.toolbar.disableMerge();
+  }
+
   insertRow(n) {
     this.data.insertRowBelow(n);
     this.reload();

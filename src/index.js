@@ -137,6 +137,14 @@ class Spreadsheet {
     this.sheet.insertColumn(n);
   }
 
+  disableMerge() {
+    this.sheet.disableMerge()
+  }
+
+  allowMerge() {
+    this.sheet.allowMerge()
+  }
+
   selectCell(sri, sci) {
     this.sheet.selectCell(sri, sci);
   }

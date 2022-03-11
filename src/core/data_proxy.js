@@ -647,14 +647,11 @@ export default class DataProxy {
         );
       }
     }
+    this.scrollx(this.scroll.x + 10, ()=>{})
+    this.scrollx(this.scroll.x - 10, ()=>{})
 
-    setTimeout(() => {
-      this.scroll.x = this.scroll.x + 100;
-      this.scroll.x = this.scroll.x - 100;
-      this.scroll.y = this.scroll.y + 100;
-      this.scroll.y = this.scroll.y - 100;
-    }, 500);
-
+    this.scrolly(this.scroll.y + 10, ()=>{})
+    this.scrolly(this.scroll.y - 10, ()=>{})
   }
 
   setCommonFakeCellsStyles(element) {

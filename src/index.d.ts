@@ -254,6 +254,16 @@ declare module 'poly-spreadsheet' {
     deleteCol(): void;
 
     /**
+     * disable selected cell merge
+     */
+    disableMerge(): void;
+
+    /**
+     * allow selected cell merge
+     */
+    allowMerge(): void;
+
+    /**
      * expr2xy
      */
     expr2xy(str: string): any;

@@ -105,6 +105,7 @@ function genBtn(it) {
 
 export default class Toolbar {
   constructor(data, widthFn, isHide = false) {
+    this.handleMergeControl = false;
     this.data = data;
     this.change = () => {};
     this.widthFn = widthFn;
@@ -214,6 +215,17 @@ export default class Toolbar {
     this[`${type}El`].click();
   }
 
+  disableMerge() {
+    this.handleMergeControl = true;
+    this.mergeEl.setState(true, true);
+  }
+
+  allowMerge() {
+    const { data } = this;
+    this.handleMergeControl = false;
+    this.mergeEl.setState(data.canUnmerge(), !data.selector.multiple());
+  }
+
   resetData(data) {
     this.data = data;
     this.reset();
@@ -226,7 +238,9 @@ export default class Toolbar {
     // console.log('canUndo:', data.canUndo());
     this.undoEl.setState(!data.canUndo());
     this.redoEl.setState(!data.canRedo());
-    this.mergeEl.setState(data.canUnmerge(), !data.selector.multiple());
+    if(!this.handleMergeControl) {
+      this.mergeEl.setState(data.canUnmerge(), !data.selector.multiple());
+    }
     this.autofilterEl.setState(!data.canAutofilter());
     // this.mergeEl.disabled();
     // console.log('selectedCell:', style, cell);
