@@ -30,6 +30,7 @@ class Spreadsheet {
       this.sheet.trigger('change-sheet-index', index);
     }, () => {
       this.deleteSheet();
+      this.sheet.trigger('change-sheet-index', this.activeElIdx);
     }, (index, value) => {
       this.datas[index].name = value;
       this.sheet.trigger('change');
@@ -65,13 +66,16 @@ class Spreadsheet {
 
   deleteSheet() {
     if (this.bottombar === null) return;
-
     const [oldIndex, nindex] = this.bottombar.deleteItem();
     if (oldIndex >= 0) {
       this.datas.splice(oldIndex, 1);
       if (nindex >= 0) this.sheet.resetData(this.datas[nindex]);
       this.sheet.trigger('delete-sheet-index', oldIndex);
     }
+  }
+
+  get activeElIdx() {
+    return this.bottombar.activeElIdx;
   }
 
   loadData(data, sheetIndex) {
