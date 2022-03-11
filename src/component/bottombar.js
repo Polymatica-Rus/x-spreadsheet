@@ -163,11 +163,11 @@ export default class Bottombar {
         if (options.mode === 'read') return;
         const {
           offsetLeft,
-          offsetHeight
+          offsetHeight,
         } = evt.target;
         this.contextMenu.setOffset({
           left: offsetLeft,
-          bottom: offsetHeight + 1
+          bottom: offsetHeight + 1,
         });
         this.deleteEl = item;
       })
@@ -216,13 +216,16 @@ export default class Bottombar {
   }
 
   deleteItem() {
+    console.log(this);
     const { activeEl, deleteEl } = this;
     if (this.items.length > 1) {
       const index = this.items.findIndex(it => it === deleteEl);
+      // const currentIndex = this.items.findIndex(it => it === activeEl);
       this.items.splice(index, 1);
       this.dataNames.splice(index, 1);
       this.menuEl.removeChild(deleteEl.el);
       this.moreEl.reset(this.dataNames);
+      // this.sheet.trigger('change-sheet-index', index);
       if (activeEl === deleteEl) {
         const [f] = this.items;
         this.activeEl = f;
@@ -232,6 +235,12 @@ export default class Bottombar {
       return [index, -1];
     }
     return [-1];
+  }
+
+  get activeElIdx() {
+    const { activeEl } = this;
+    const index = this.items.findIndex(it => it === activeEl);
+    return index;
   }
 
   showSheet(index) {

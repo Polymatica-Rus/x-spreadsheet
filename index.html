@@ -114,7 +114,11 @@
           console.log('cell:', cell, ', ri:', ri, ', ci:', ci);
         }).on('cell-edited', (text, ri, ci) => {
           console.log('text:', text, ', ri: ', ri, ', ci:', ci);
-        });
+        }).on('change-sheet-index', (index) => {
+        console.log('change-sheet-index:', index);
+      }).on('delete-sheet-index', (index) => {
+        console.log('delete-sheet-index:', index);
+      });
 
       setTimeout(() => {
         // xs.loadData([{ rows }]);
