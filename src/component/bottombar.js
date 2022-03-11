@@ -163,11 +163,11 @@ export default class Bottombar {
         if (options.mode === 'read') return;
         const {
           offsetLeft,
-          offsetHeight
+          offsetHeight,
         } = evt.target;
         this.contextMenu.setOffset({
           left: offsetLeft,
-          bottom: offsetHeight + 1
+          bottom: offsetHeight + 1,
         });
         this.deleteEl = item;
       })
@@ -232,6 +232,12 @@ export default class Bottombar {
       return [index, -1];
     }
     return [-1];
+  }
+
+  get activeElIdx() {
+    const { activeEl } = this;
+    const index = this.items.findIndex(it => it === activeEl);
+    return index;
   }
 
   showSheet(index) {
