@@ -216,16 +216,13 @@ export default class Bottombar {
   }
 
   deleteItem() {
-    console.log(this);
     const { activeEl, deleteEl } = this;
     if (this.items.length > 1) {
       const index = this.items.findIndex(it => it === deleteEl);
-      // const currentIndex = this.items.findIndex(it => it === activeEl);
       this.items.splice(index, 1);
       this.dataNames.splice(index, 1);
       this.menuEl.removeChild(deleteEl.el);
       this.moreEl.reset(this.dataNames);
-      // this.sheet.trigger('change-sheet-index', index);
       if (activeEl === deleteEl) {
         const [f] = this.items;
         this.activeEl = f;

@@ -71,7 +71,6 @@ class Spreadsheet {
       this.datas.splice(oldIndex, 1);
       if (nindex >= 0) this.sheet.resetData(this.datas[nindex]);
       this.sheet.trigger('delete-sheet-index', oldIndex);
-      // this.sheet.trigger('change-sheet-index', sheetIndex);
     }
   }
 
